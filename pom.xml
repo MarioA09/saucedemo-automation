@@ -1,0 +1,121 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
+         https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>simulacion-selenium</groupId>
+  <artifactId>simulacion-selenium</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+
+  <!-- 🔥 CONFIGURACIÓN DE JAVA -->
+  <properties>
+    <maven.compiler.source>17</maven.compiler.source>
+    <maven.compiler.target>17</maven.compiler.target>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
+  <dependencies>
+
+    <!-- ✅ SELENIUM -->
+    <dependency>
+      <groupId>org.seleniumhq.selenium</groupId>
+      <artifactId>selenium-java</artifactId>
+      <version>4.18.1</version>
+    </dependency>
+
+    <!-- ✅ CDP para Chrome -->
+    <dependency>
+      <groupId>org.seleniumhq.selenium</groupId>
+      <artifactId>selenium-devtools-v122</artifactId>
+      <version>4.18.1</version>
+    </dependency>
+
+    <!-- ✅ JUNIT 5 (COMPLETO) -->
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter</artifactId>
+      <version>5.10.2</version>
+      <scope>test</scope>
+    </dependency>
+
+    <!-- ✅ Engine explícito de JUnit 5 -->
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-engine</artifactId>
+      <version>5.10.2</version>
+      <scope>test</scope>
+    </dependency>
+
+    <!-- 🔥 LAUNCHER (ARREGLA ERRORES) -->
+    <dependency>
+      <groupId>org.junit.platform</groupId>
+      <artifactId>junit-platform-launcher</artifactId>
+      <version>1.10.2</version>
+      <scope>test</scope>
+    </dependency>
+
+    <!-- ✅ WebDriverManager -->
+    <dependency>
+      <groupId>io.github.bonigarcia</groupId>
+      <artifactId>webdrivermanager</artifactId>
+      <version>5.5.3</version>
+    </dependency>
+
+    <!-- ✅ Logger SLF4J (para eliminar advertencias) -->
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-simple</artifactId>
+      <version>2.0.7</version>
+      <scope>test</scope>
+    </dependency>
+
+  </dependencies>
+
+  <build>
+    <plugins>
+
+      <!-- ✅ COMPILER (Java 17) -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.13.0</version>
+        <configuration>
+          <source>17</source>
+          <target>17</target>
+        </configuration>
+      </plugin>
+
+      <!-- ✅ SUREFIRE (EJECUTA TODOS LOS TESTS DE JUNIT 5 Y MUESTRA CADA MÉTODO) -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>3.1.2</version>
+        <configuration>
+          <useModulePath>false</useModulePath>
+          <printSummary>true</printSummary>
+          <reportFormat>brief</reportFormat>
+          <forkCount>1</forkCount>
+          <reuseForks>true</reuseForks>
+          <includes>
+            <include>**/*Test.java</include>
+          </includes>
+          <testFailureIgnore>false</testFailureIgnore>
+          <properties>
+            <property>
+              <name>junit.jupiter.extensions.autodetection.enabled</name>
+              <value>true</value>
+            </property>
+            <property>
+              <name>junit.jupiter.displayname.generator.default</name>
+              <value>org.junit.jupiter.api.DisplayNameGenerator$ReplaceUnderscores</value>
+            </property>
+          </properties>
+        </configuration>
+      </plugin>
+
+    </plugins>
+  </build>
+
+</project>
